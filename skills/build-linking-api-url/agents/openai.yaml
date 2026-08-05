@@ -1,0 +1,4 @@
+interface:
+  display_name: "Build Linking API URL"
+  short_description: "Create a controlled template-copy URL."
+  default_prompt: "Use $build-linking-api-url to create this Looker Studio template link."

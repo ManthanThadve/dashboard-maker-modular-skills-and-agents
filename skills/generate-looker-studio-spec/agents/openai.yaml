@@ -1,0 +1,4 @@
+interface:
+  display_name: "Generate Looker Studio Spec"
+  short_description: "Specify template-based dashboard assembly."
+  default_prompt: "Use $generate-looker-studio-spec to create an exact Looker Studio build spec."

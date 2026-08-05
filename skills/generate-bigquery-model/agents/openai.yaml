@@ -1,0 +1,4 @@
+interface:
+  display_name: "Generate BigQuery Model"
+  short_description: "Draft governed BigQuery dashboard SQL."
+  default_prompt: "Use $generate-bigquery-model to draft a governed dashboard data model."

@@ -1,0 +1,20 @@
+{
+  "template": "operational-performance",
+  "version": "1.0.0",
+  "data_source_alias": "ds0_main",
+  "required_fields": [
+    {"name": "metric_date", "type": "DATE", "role": "date_range_dimension"},
+    {"name": "region", "type": "TEXT", "role": "filter_dimension"},
+    {"name": "channel", "type": "TEXT", "role": "filter_dimension"},
+    {"name": "order_id", "type": "TEXT", "aggregation": "COUNT_DISTINCT"},
+    {"name": "customer_id", "type": "TEXT", "aggregation": "COUNT_DISTINCT"},
+    {"name": "completed_orders", "type": "NUMBER", "aggregation": "SUM"},
+    {"name": "net_revenue", "type": "CURRENCY", "aggregation": "SUM"},
+    {"name": "gross_margin", "type": "CURRENCY", "aggregation": "SUM"}
+  ],
+  "calculated_fields": [
+    {"name": "Gross Margin %", "formula": "SAFE_DIVIDE(SUM(gross_margin), SUM(net_revenue))", "type": "PERCENT"},
+    {"name": "Average Order Value", "formula": "SAFE_DIVIDE(SUM(net_revenue), SUM(completed_orders))", "type": "CURRENCY"},
+    {"name": "Unique Customers", "formula": "COUNT_DISTINCT(customer_id)", "type": "NUMBER"}
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "request_id": "DB-104",
+  "title": "Weekly Sales Performance",
+  "audience": "Regional sales managers",
+  "decision_supported": "Identify underperforming regions and channels for weekly follow-up.",
+  "template_family": "operational-performance",
+  "time_grain": "day",
+  "freshness_sla": "Daily by 08:00 Asia/Kolkata",
+  "dashboard_filters": ["metric_date", "region", "channel"],
+  "kpis": ["completed_orders", "net_revenue", "gross_margin_pct", "average_order_value", "unique_customers"],
+  "acceptance_examples": [
+    "Net revenue for an agreed closed week reconciles to Finance within 0.5%.",
+    "Changing Region filters every scorecard, trend, and table."
+  ],
+  "open_questions": []
+}

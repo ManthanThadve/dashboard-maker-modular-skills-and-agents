@@ -1,0 +1,4 @@
+interface:
+  display_name: "Release Dashboard Package"
+  short_description: "Create a governed dashboard release record."
+  default_prompt: "Use $release-dashboard-package to prepare this dashboard for release."

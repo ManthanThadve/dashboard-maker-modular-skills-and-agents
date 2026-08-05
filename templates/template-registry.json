@@ -1,0 +1,32 @@
+{
+  "version": "1.0.0",
+  "templates": [
+    {
+      "id": "executive-pulse",
+      "version": "1.0.0",
+      "status": "draft",
+      "report_id": "REPLACE_WITH_EXECUTIVE_PULSE_REPORT_ID",
+      "data_source_alias": "ds0_main",
+      "field_contract": "contracts/operational-performance-1.0.0.json",
+      "owner_group": "bi-template-owners@example.com"
+    },
+    {
+      "id": "operational-performance",
+      "version": "1.0.0",
+      "status": "draft",
+      "report_id": "REPLACE_WITH_OPERATIONAL_PERFORMANCE_REPORT_ID",
+      "data_source_alias": "ds0_main",
+      "field_contract": "contracts/operational-performance-1.0.0.json",
+      "owner_group": "bi-template-owners@example.com"
+    },
+    {
+      "id": "funnel-and-cohort",
+      "version": "1.0.0",
+      "status": "planned",
+      "report_id": "REPLACE_WITH_FUNNEL_AND_COHORT_REPORT_ID",
+      "data_source_alias": "ds0_main",
+      "field_contract": "contracts/funnel-and-cohort-1.0.0.json",
+      "owner_group": "bi-template-owners@example.com"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+report:
+  title: Weekly Sales Performance
+  template: operational-performance@1.0.0
+  data_source_alias: ds0_main
+  source: acme-prod.analytics_curated.vw_sales_completed_orders
+  canvas: {width: 1440, grid_columns: 12, margin: 32}
+
+dashboard_controls:
+  - {type: date_range, label: Reporting period, default: Last 28 days, date_dimension: metric_date, position: {x: 32, y: 72, width: 240, height: 36}}
+  - {type: drop_down, label: Region, field: region, apply_to: report, position: {x: 288, y: 72, width: 180, height: 36}}
+  - {type: drop_down, label: Channel, field: channel, apply_to: report, position: {x: 484, y: 72, width: 180, height: 36}}
+
+calculated_fields:
+  - {name: Gross Margin %, formula: "SAFE_DIVIDE(SUM(gross_margin), SUM(net_revenue))", type: Percent}
+  - {name: Average Order Value, formula: "SAFE_DIVIDE(SUM(net_revenue), SUM(completed_orders))", type: Currency}
+  - {name: Unique Customers, formula: "COUNT_DISTINCT(customer_id)", type: Number}
+
+pages:
+  - name: Overview
+    charts:
+      - {type: scorecard, title: Completed Orders, metric: completed_orders, aggregation: Sum, comparison: Previous period, position: {x: 32, y: 132, width: 320, height: 128}}
+      - {type: scorecard, title: Net Revenue, metric: net_revenue, aggregation: Sum, format: Currency, comparison: Previous period, position: {x: 368, y: 132, width: 320, height: 128}}
+      - {type: scorecard, title: Gross Margin %, metric: Gross Margin %, comparison: Previous period, position: {x: 704, y: 132, width: 320, height: 128}}
+      - {type: scorecard, title: Average Order Value, metric: Average Order Value, comparison: Previous period, position: {x: 1040, y: 132, width: 320, height: 128}}
+      - {type: time_series, title: Daily Net Revenue, dimension: metric_date, metric: net_revenue, aggregation: Sum, date_range: Auto, comparison: Previous period, sort: metric_date ascending, position: {x: 32, y: 292, width: 872, height: 320}}
+      - {type: bar_chart, title: Net Revenue by Region, dimension: region, metric: net_revenue, aggregation: Sum, sort: net_revenue descending, limit: 10, position: {x: 920, y: 292, width: 440, height: 320}}
+  - name: Regional Detail
+    charts:
+      - type: table
+        title: Region and Channel Performance
+        dimensions: [region, channel]
+        metrics: [completed_orders, net_revenue, Gross Margin %, Average Order Value, Unique Customers]
+        sort: net_revenue descending
+        pagination: 25
+        position: {x: 32, y: 132, width: 1328, height: 460}
+      - {type: time_series, title: Daily Completed Orders, dimension: metric_date, metric: completed_orders, aggregation: Sum, date_range: Auto, position: {x: 32, y: 628, width: 648, height: 280}}
+      - {type: stacked_bar_chart, title: Net Revenue by Channel, dimension: region, breakdown_dimension: channel, metric: net_revenue, aggregation: Sum, sort: net_revenue descending, position: {x: 712, y: 628, width: 648, height: 280}}
+
+release_checks:
+  - Confirm every chart responds to Reporting period, Region, and Channel.
+  - Confirm ratio metrics calculate from additive values and Unique Customers uses COUNT_DISTINCT(customer_id).
+  - Reconcile the default date range against validation SQL.
+  - Display data refresh time and dashboard owner in the template footer.

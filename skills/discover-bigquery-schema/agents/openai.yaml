@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discover BigQuery Schema"
+  short_description: "Find governed dashboard source assets."
+  default_prompt: "Use $discover-bigquery-schema to find governed sources for these KPIs."

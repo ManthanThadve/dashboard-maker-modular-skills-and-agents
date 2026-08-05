@@ -1,0 +1,4 @@
+interface:
+  display_name: "Resolve KPI Catalog"
+  short_description: "Map dashboard metrics to certified KPIs."
+  default_prompt: "Use $resolve-kpi-catalog to match these KPIs to the catalog."

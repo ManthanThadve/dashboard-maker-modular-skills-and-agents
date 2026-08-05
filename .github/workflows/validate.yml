@@ -1,0 +1,23 @@
+name: Validate Dashboard Maker
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Validate skills
+        run: python tools/validate_skills.py skills
+      - name: Validate sample request package
+        run: python tools/dashboard_maker.py validate-request --request examples/DB-104/request.json --catalog catalog/kpi-catalog.json --registry templates/template-registry.json
+      - name: Lint sample SQL
+        run: python tools/dashboard_maker.py lint-sql --sql models/sales/vw_sales_completed_orders.sql --partition-column order_date --strict

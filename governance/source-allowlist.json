@@ -1,0 +1,10 @@
+{
+  "version": "1.0.0",
+  "policy": "Looker Studio reports may use only approved curated assets. Agents may discover metadata only for the datasets below.",
+  "metadata_projects": ["acme-prod"],
+  "approved_raw_datasets": ["sales_raw"],
+  "approved_curated_datasets": ["analytics_curated", "analytics_mart"],
+  "restricted_columns": ["email", "phone", "full_name", "address", "payment_token"],
+  "required_reviewers": ["analytics_engineer", "data_steward"],
+  "default_timezone": "Asia/Kolkata"
+}

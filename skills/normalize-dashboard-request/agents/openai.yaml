@@ -1,0 +1,4 @@
+interface:
+  display_name: "Normalize Dashboard Request"
+  short_description: "Structure dashboard requests safely."
+  default_prompt: "Use $normalize-dashboard-request to structure this dashboard brief."

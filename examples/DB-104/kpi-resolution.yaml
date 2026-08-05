@@ -1,0 +1,24 @@
+request_id: DB-104
+catalog_version: 1.0.0
+status: resolved
+kpis:
+  - kpi_id: completed_orders
+    source_asset: acme-prod.analytics_curated.vw_sales_completed_orders
+    output_field: completed_orders
+    owner: sales-operations@example.com
+  - kpi_id: net_revenue
+    source_asset: acme-prod.analytics_curated.vw_sales_completed_orders
+    output_field: net_revenue
+    owner: finance@example.com
+  - kpi_id: gross_margin_pct
+    source_asset: acme-prod.analytics_curated.vw_sales_completed_orders
+    output_field: Gross Margin %
+    owner: finance@example.com
+  - kpi_id: average_order_value
+    source_asset: acme-prod.analytics_curated.vw_sales_completed_orders
+    output_field: Average Order Value
+    owner: sales-operations@example.com
+  - kpi_id: unique_customers
+    source_asset: acme-prod.analytics_curated.vw_sales_completed_orders
+    output_field: Unique Customers
+    owner: sales-operations@example.com

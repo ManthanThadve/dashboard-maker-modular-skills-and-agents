@@ -1,0 +1,4 @@
+interface:
+  display_name: "Validate Dashboard Data"
+  short_description: "Reconcile dashboard metrics safely."
+  default_prompt: "Use $validate-dashboard-data to validate this dashboard model."
